@@ -1,0 +1,49 @@
+- import urqa.action._
+
+!!! 5
+html
+  head
+    != antiCsrfMeta
+    != xitrumCss
+
+    meta(content="text/html; charset=utf-8" http-equiv="content-type")
+    title URQA
+
+    link(type="image/vnd.microsoft.icon" rel="shortcut icon" href={publicUrl("favicon.ico")})
+
+    link(type="text/css" rel="stylesheet" media="all" href={publicUrl("css/bootstrap-theme.css")})
+    link(type="text/css" rel="stylesheet" media="all" href={publicUrl("css/bootstrap-theme.min.css")})
+    link(type="text/css" rel="stylesheet" media="all" href={publicUrl("css/bootstrap.css")})
+    link(type="text/css" rel="stylesheet" media="all" href={publicUrl("css/bootstrap.min.css")})
+  body
+
+    |<nav class="navbar navbar-default" role="navigation">
+    |<div class="navbar-header">
+    |<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#timetracker-navbar-collapse-1">
+    |  <span class="sr-only">Toggle navigation</span>
+    |  <span class="icon-bar"></span>
+    |  <span class="icon-bar"></span>
+    |  <span class="icon-bar"></span>
+    |</button>
+    |<a class="navbar-brand" href="/">URQA</a>
+    |</div>
+    | <div class="collapse navbar-collapse" id="timetracker-navbar-collapse-1">
+    |<ul class="nav navbar-nav">
+    - var user = session.getOrElse("userId", null)
+    - if (user != null)
+      |<li><a href="/logout">Logout</a></li>
+    |</ul>
+    |<div>
+    |</nav>
+    .container
+      .row
+        .col-md-12
+          #flash
+            !~ jsRenderFlash()
+            != renderedView
+    != jsDefaults
+    != jsForView
+    |<script type="text/javascript" src="/js/vendor/bootstrap.min.js"></script>
+    |<script type="text/javascript" src="/js/vendor/bootstrap-dropdown.js"></script>
+
+

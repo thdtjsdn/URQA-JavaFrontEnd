@@ -45,6 +45,7 @@ import org.openid4java.OpenIDException
        val destinationUrl    = authReq.getDestinationUrl(true)
  
        session(OpenId.SESSION_KEY) = discovered
+       session("8000Test") = "false"
        redirectTo(destinationUrl)
      } catch {
        case NonFatal(e) =>
@@ -59,6 +60,7 @@ import org.openid4java.OpenIDException
  class OpenIdVerify extends Api {
    def execute() {
 var boolean = "false"
+var forTest = false
      try {
        val queryString  = request.getUri.substring(request.getUri.indexOf("?") + 1)
        val openIdResp   = ParameterList.createFromQueryString(queryString)
@@ -68,8 +70,11 @@ var boolean = "false"
        val verified     = verification.getVerifiedId
 
 
-       
+
        if (verified != null){
+             if(session("8000Test") == "true"){
+        forTest = true
+     }
        session.clear()
        session("userId") = param("openid.ext1.value.email")
        boolean = "true"
@@ -81,6 +86,12 @@ var boolean = "false"
          log.warn("OpenID error", e)
          flash("OpenID login failed")
      }  
-     respondJson(List(session("userId"),boolean))
+     if(forTest){
+        redirectTo("/afterlogin")
+     }
+     else {
+           respondJson(List(session("userId"),boolean))
+     }
+
    }
  }

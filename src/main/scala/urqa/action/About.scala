@@ -3,7 +3,7 @@ package urqa.action
 import xitrum.annotation.GET
 
 @GET("")
-class About extends DefaultLayout {
+class About extends Api {
   def execute() {
     respondView(Map("type" ->"mustache"))
   }

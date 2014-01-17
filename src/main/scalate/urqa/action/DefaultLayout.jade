@@ -15,26 +15,58 @@ html
     link(type="text/css" rel="stylesheet" media="all" href={publicUrl("css/bootstrap-theme.min.css")})
     link(type="text/css" rel="stylesheet" media="all" href={publicUrl("css/bootstrap.css")})
     link(type="text/css" rel="stylesheet" media="all" href={publicUrl("css/bootstrap.min.css")})
+    link(type="text/css" rel="stylesheet" media="all" href={publicUrl("css/bootstrap.css")})
+    link(type="text/css" rel="stylesheet" media="all" href={publicUrl("css/bootstrap.min.css")})
+    link(type="text/css" rel="stylesheet" media="all" href={publicUrl("css/navbar.css")})
+    link(type="text/css" rel="stylesheet" media="all" href={publicUrl("css/carousel.css")})
+    link(type="text/css" rel="stylesheet" media="all" href={publicUrl("css/bootstrap-formhelpers.css")})
+    link(type="text/css" rel="stylesheet" media="all" href={publicUrl("css/bootstrap-formhelpers.min.css")})
+
   body
 
     |<nav class="navbar navbar-default" role="navigation">
-    |<div class="navbar-header">
-    |<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#timetracker-navbar-collapse-1">
-    |  <span class="sr-only">Toggle navigation</span>
-    |  <span class="icon-bar"></span>
-    |  <span class="icon-bar"></span>
-    |  <span class="icon-bar"></span>
-    |</button>
-    |<a class="navbar-brand" href="/">URQA</a>
-    |</div>
-    | <div class="collapse navbar-collapse" id="timetracker-navbar-collapse-1">
-    |<ul class="nav navbar-nav">
+    |<div class="navbar-wrapper">
+    |  <div class="container">
+    |    <div class="navbar navbar-inverse navbar-static-top" role="navigation">
+    |      <div class="container">
+    |        <div class="navbar-header">
+    |          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+    |            <span class="sr-only">Toggle navigation</span>
+    |            <span class="icon-bar"></span>
+    |            <span class="icon-bar"></span>
+    |            <span class="icon-bar"></span>
+    |          </button>
+    |          <a class="navbar-brand" href="\">URQA</a>
+    |        </div>
+    |        <div class="navbar-collapse collapse">
+    |          <ul class="nav navbar-nav">
+    |        <li><a href="\tutorial">Tutorial</a></li>
     - var user = session.getOrElse("userId", null)
+    - var isadmin = session.getOrElse("isAdmin", null)
+    - user = "temp"
+    - isadmin = "admin"
     - if (user != null)
+      |      <li><a href="/weekly_timesheets">My Project</a></li>   
+      - if (isadmin == "admin")
+        |      <li><a href="/OtherTimesheet">Other Project</a></li>
+        |      <li class="dropdown">
+        |        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Admin <b class="caret"></b></a>
+        |        <ul class="dropdown-menu">
+        |          <li role="presentation"><a role="menuitem" tabindex="-1" href="/projectpage">Project</a></li>
+        |          <li role="presentation"><a role="menuitem" tabindex="-1" href="/clientpage">Client</a></li>
+        |          <li role="presentation"><a role="menuitem" tabindex="-1" href="/entitypage">Entity</a></li>
+        |          <li role="presentation"><a role="menuitem" tabindex="-1" href="/memberpage">Members</a></li>
+        |        </ul>
+        |      </li>
       |<li><a href="/logout">Logout</a></li>
-    |</ul>
-    |<div>
-    |</nav>
+    - if (user != null)
+      |<li><a href="/login">Login</a></li>
+    |          </ul>
+    |        </div>
+    |      </div>
+    |    </div>
+    |  </div>
+    |</div>
     .container
       .row
         .col-md-12
@@ -43,7 +75,17 @@ html
             != renderedView
     != jsDefaults
     != jsForView
+    |    <p>&copy; 2013 UrQA,  Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+    |<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
     |<script type="text/javascript" src="/js/vendor/bootstrap.min.js"></script>
     |<script type="text/javascript" src="/js/vendor/bootstrap-dropdown.js"></script>
-
-
+    |<script src="/js/jquery.js" ></script>
+    |<script src="js/bootstrap-formhelpers.js" ></script>
+    |<script src="js/bootstrap-formhelpers.min.js" ></script>
+    |<script src="js/bootstrap.min.js"></script>
+    |<script src="js/bootstrap.js"></script>
+    |<script type="text/javascript" src="/js/vendor/bootstrap-dropdown.js"></script>
+    |<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    |<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    |<script src="js/holder.js"></script>
+    |<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>

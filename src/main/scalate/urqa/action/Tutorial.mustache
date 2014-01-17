@@ -1,0 +1,198 @@
+	<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js'></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js"></script>
+
+
+
+<div class="row" style="margin-top:70px">
+<div class="col-md-12">
+
+
+<div class="page-header">
+<h1 style="color:black">UrQAClient Tutorial</h1>
+</div>
+<h3 style="color:black">This tutorial will guide you through the key steps to use UrQA Client.</h3>
+<br>
+<h3 style="color:black"><a href ="#1">Step 1: Import UrQAClient.jar</a></h3>
+<br>
+<h3 style="color:black"><a href ="#2">Step 2: Android manifest file setting</a></h3>
+<br>
+<h3 style="color:black"><a href ="#3">Step 3: Create instance</a></h3>
+    <br>
+    <h3 style="color:black">you are ready to start!!!</h3>
+<hr>
+
+<br>
+<h3 style="color:black"><a href ="#4">Additional : If you are using JNI project</a></h3>
+<br>
+    <br>
+    <br>
+    <br>
+
+
+
+
+    <h3 style="color:black"><a name = '1'></a>Step 1: Import UrQAClient.jar</h3>
+<p style="color:black">To use UrQA, you have to import the <a href='UrQA-Client_0.92.jar'>UrQAClient.jar</a>.<br>
+right click the project -> properties -> add External JARs -> add UrQAClient.jar
+</p>
+
+<img src= "images/tutorial/step1.png" align="middle">
+<br>
+<br>
+<br>
+<h3 style="color:black"><a name = '2'></a>Step 2: Android manifest file setting</h3>
+<p style="color:black">Put the following settings:</p>
+<pre class='brush: xml'>
+&lt;uses-permission android:name="android.permission.INTERNET"/>
+</pre>
+<br>
+<br>
+<br>
+<h3 style="color:black"><a name = '3'></a>Step 3: Create instance</h3>
+<p style="color:black">Create a new class in your package root If your app already contains an Application subclass, add UrQA to this class.</p>
+
+<pre class='brush: java; highlight: [16]'>
+package com.example.testproject;
+
+import com.urqa.clientinterface.URQAController;
+
+import android.os.Bundle;
+import android.app.Activity;
+import android.view.Menu;
+
+public class MainActivity extends Activity {
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+
+		URQAController.InitializeAndStartSession(getApplicationContext(),/* YourAPIKey */);
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.main, menu);
+		return true;
+	}
+
+}
+
+</pre>
+
+<br>
+<br>
+<br>	   
+<h3 style="color:black"><a name = '4'></a>If you are using JNI project</h3>
+<p style="color:black">create a JNI folder within the project</p>
+<img src= "images/tutorial/step4.png" align="middle">
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+<p style="color:black">we provide <a href='UrQA-Native.zip'>UrQA-Native.zip</a> file.<br> copy the Jni folder from this file</p>
+<img src= "images/tutorial/step4-1.png" align="middle">
+
+
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <p style="color:black">Please make mk files <br> 'Application.mk' and 'android.mk'</p>
+    <img src= "images/tutorial/step4-2.png" align="middle">
+    <h4 style="color:black">Application.mk sample</h4>
+    <pre class='brush: bash; highlight: [1,2]'>
+
+APP_STL := stlport_static
+APP_ABI := armeabi armeabi-v7a
+
+</pre>
+<br>
+    <h4 style="color:black">android.mk sample</h4>
+<pre class='brush: bash; highlight: [3,4,5,6,7,9,13,16,17]'>
+LOCAL_PATH := $(call my-dir)
+
+include $(CLEAR_VARS )
+LOCAL_MODULE := urqa
+LOCAL_SRC_FILES  = ./$(TARGET_ARCH_ABI)/liburqanative.a
+include $(PREBUILT_STATIC_LIBRARY)
+include $(CLEAR_VARS)
+
+LOCAL_DEFAULT_CPP_EXTENSION := cpp
+
+LOCAL_MODULE := csourcep
+LOCAL_SRC_FILES := csourcep.cpp
+LOCAL_STATIC_LIBRARIES += urqa
+LOCAL_LDLIBS := -L$(SYSROOT)/usr/lib \
+
+LOCAL_C_INCLUDES        := $(LOCAL_PATH)/header/common/android/include \
+                           $(LOCAL_PATH)/header
+
+include $(BUILD_SHARED_LIBRARY)
+</pre>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <p style="color:black">When you initialize the app, place the following code</p>
+
+    <pre class='brush: cpp; highlight: [3,8]'>
+        #include &lt;string.h>
+        #include &lt;jni.h>
+        #include "urqa.h"
+
+        extern "C" {
+            JNIEXPORT jstring Java_com_example_urqanative_MainActivity_invokeNativeFunction(JNIEnv* env, jobject javaThis) {
+
+            UrqaNative::URQAIntialize(env);
+
+            return env->NewStringUTF("Hello from C Code!");
+          }
+        }
+
+    </pre>
+
+    <h4 style="color:black">Now you will be able to get Native Crash Report!!!!!!!!</h4>
+
+</div>
+</div><!-- /.row -->
+
+<hr>
+    
+
+	<script src='syntaxhighlighter/scripts/shCore.js' type='text/javascript'></script> 
+	<script src='syntaxhighlighter/scripts/shBrushJava.js' type='text/javascript'></script>
+	<script src='syntaxhighlighter/scripts/shBrushXml.js' type='text/javascript'></script>
+	  <script src='syntaxhighlighter/scripts/shBrushBash.js' type='text/javascript'></script>
+	  <script src='syntaxhighlighter/scripts/shBrushCpp.js' type='text/javascript'></script>
+	<script src='syntaxhighlighter/scripts/shAutoloader.js' type='text/javascript'></script>
+	<script type="text/javascript" src="syntaxhighlighter/scripts/shLegacy.js"></script>
+
+	<script type="text/javascript">
+	//<![CDATA[
+	SyntaxHighlighter.config.bloggerMode = false;
+	SyntaxHighlighter.all();
+	//]]>
+	</script>
+
+    <script src="bootstrap/js/jquery.js"></script>
+    <script src="bootstrap/js/bootstrap.js"></script>
+     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js"></script>
+ 	<script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+
+    
+    
+    
+
+
+
+
+
+
+
+

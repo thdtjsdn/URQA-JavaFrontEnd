@@ -1,6 +1,7 @@
 
     <style>
 
+
     /* Carousel base class */
     .carousel {
       margin-top: 100px;
@@ -177,6 +178,114 @@
       }
 
     }
+
+ .modalDialog {
+  position: fixed;
+  font-family: Arial, Helvetica, sans-serif;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0,0,0,0.8);
+  z-index: 99999;
+  opacity:0;
+  -webkit-transition: opacity 400ms ease-in;
+  -moz-transition: opacity 400ms ease-in;
+  transition: opacity 400ms ease-in;
+  pointer-events: none;
+}
+.modalDialog:target {
+  opacity:1;
+  pointer-events: auto;
+}
+
+.modalDialog > div {
+  width: 420px;
+  height:315px; 
+  position: relative;
+  margin: 10% auto;
+  background: #fff;
+  background: -moz-linear-gradient(#fff, #999);
+  background: -webkit-linear-gradient(#fff, #999);
+  background: -o-linear-gradient(#fff, #999);
+}
+
+.close {
+  background: #606061;
+  color: #FFFFFF;
+  line-height: 25px;
+  position: absolute;
+  right: -12px;
+  text-align: center;
+  top: -10px;
+  width: 24px;
+  text-decoration: none;
+  font-weight: bold;
+  -webkit-border-radius: 12px;
+  -moz-border-radius: 12px;
+  border-radius: 12px;
+  -moz-box-shadow: 1px 1px 3px #000;
+  -webkit-box-shadow: 1px 1px 3px #000;
+  box-shadow: 1px 1px 3px #000;
+}
+
+.close:hover { background: #00d9ff; }
+
+-webkit-transition: opacity 400ms ease-in;
+-moz-transition: opacity 400ms ease-in;
+transition: opacity 400ms ease-in;
+
+ul
+{
+  width: 100%;
+  padding: 0;
+  margin: 0 0 2em 0;
+  list-style-type: none;
+}
+ 
+li
+{
+  float: left;
+  width: 25%;
+  padding: 0;
+  margin: 0;
+  background-color: #FFF;
+  border: 10px solid #fff;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+#element
+{
+    position: relative;
+    height: 0;
+    padding: 56.25% 0 0 0;
+}
+
+li a
+{
+  display: block;
+  width: 100%;
+  position: relative;
+  height: 0;
+  padding: 56.25% 0 0 0;
+  overflow: hidden;
+}
+ 
+li a img
+{
+  position: absolute;
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
     </style>
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -184,93 +293,185 @@
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-    <!-- Fav and touch icons -->
-<!--     <link rel="shortcut icon" href="asset/A-57.png">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="asset/A-144.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="asset/A-114.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="asset/A-72.png">
-    <link rel="apple-touch-icon-precomposed" href="asset/A-57.png">
- -->
-
-    <!-- Carousel 
-    ================================================== -->
-    <div id="myCarousel" class="carousel slide">
-      <div class="carousel-inner">
-        <div class="item active">
-          <img src="images/one.png" alt="">
-          <div class="container">
-            <div class="carousel-caption">
-              <h1>강력한 로그 기능</h1>
-              <p class="lead">XML 파일을 통하여 사용자가 직접 코딩을 하지 않고 다양한 로그옵션을 조정 할수 있습니다. 또한 레벨별로 로그를 표시하여 레벨만 교체 하여 필요한 로그를 볼 수 있게 제작 되었습니다.</p>
-              
-            </div>
-          </div>
-        </div>
-        <div class="item">
-          <img src="images/two.png" alt="">
-          <div class="container">
-            <div class="carousel-caption">
-              <h1>Visualization 기능</h1>
-              <p class="lead">구글 앱 엔진을 통하여 사용자는 단순히 앱엔진 상에 코드만 올려도 버그 리포트 데이터를 가시화 하여 볼 수 잇습니다. </p>
-              
-            </div>
-          </div>
-        </div>
-        <div class="item">
-          <img src="images/three.png" alt="">
-          <div class="container">
-            <div class="carousel-caption">
-              <h1>버그 리포트 기능</h1>
-              <p class="lead">클라이언트에서 에러가 날때 에러에 대한 정보를 모아 파일 또는 서버로 전송 할 수 있습니다.</p>
-              
-            </div>
-          </div>
-        </div>
-      </div>
-      <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-      <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
-    </div><!-- /.carousel -->
+<div>
+<a href="http://ur-qa.com"><img src = "images/UrQA.png" style="width:135px;"></img></a>
+</div>
 
 
 
-	<hr>
-
-   <hr class="featurette-divider">
 
       <div class="featurette">
       
       <div class="featurette-image pull-right">
-        <img class="img-circle" src="images/error1.png">
         </div>
-        <h2 class="featurette-heading">Sending Bugreport! </h2>
-        <p class="lead">클라이언트에서 에러가 날때 서버로 버그 리포트를 전송합니다. 웹에서 정보를 받아서 처리 할수도 있고 사용자가 직접 서버에 연결 할 수도 있습니다. UrQA만의 강력한 에러 리포트 기능을 느껴 보세요</p>
+
+        <div class="row">
+        <div class="col-md-1"></div>
+
+        <div class="col-md-6">
+                <h2 class="featurette-heading">No More Bugs! </h2>
+                <p class="lead">클라이언트에서 에러가 날때 서버로 버그 리포트를 전송합니다. 웹에서 정보를 받아서 처리 할수도 있고 사용자가 직접 서버에 연결 할 수도 있습니다. UrQA만의 강력한 에러 리포트 기능을 느껴 보세요</p>
+                      <button class="btn btn-default"><a href="#createEntity" style="text-decoration: none">Quick Tour</a></button>
+                      &nbsp&nbsp&nbsp&nbsp<button class="btn btn-active"><a href="#createEntity" style="text-decoration: none">Join us</a></button>
+                </div></div>
       </div>
 
-      <hr class="featurette-divider">
 
-      <div class="featurette">
-        <img class="featurette-image pull-left" src="images/Log.png">
-        <h2 class="featurette-heading">Powerful Log!</h2>
-        <p class="lead">웹 서버에서 실시간으로 사용자가 보내온 로그 정보를 받아 볼 수 있습니다. 클라이언트 소스와 함께 제공되는 AppEngine을 이용 할수도 있고 사용자가 클라이언트에서 직접 구현하여 다른 서버에서도 로그 정보를 받아 올 수 있게 컨트롤 할 수 있습니다.
-                   <br> 또한 XML파일로 설정값을 바꿀수 있어 사용자가 편리하게 사용 할 수 있습니다.</p>
-      </div>
+      <div style="height:100px;"><p></div>
+<center><h2 class="featurette-heading">Fetured Client</h2></center>
 
-      <hr class="featurette-divider">
+<ul>
+  <li><a><img src="images/clients/Sleep-if-u-can.png"/></a></li>
+    <li><a><img src="images/clients/logo.jpg"/></a></li>
+  <li><a><img src="images/clients/Sleep-if-u-can.png"/></a></li>
+  <li><a><img src="images/clients/nine.jpg"/></a></li>
 
-      <div class="featurette">
-        <img class="featurette-image pull-right" src="images/visual.png">
-        <h2 class="featurette-heading">Visualization through the Web!</h2>
-        <p class="lead">UrQA에서 제공하는 AppEngine을 이용하면 다음과 같이 에러 리포트정보를 가시화 시켜서 한눈에 어떤 에러와 어떤 정보들이 많이 들어 왔는지 쉽게 알 수 있습니다. UrQA의 강력한 Visualization기능을 맛보세요</p>
+</ul>
+
+
+        <div class="col-md-2"><center><img src=""></center></div>
+
+
+<div id="createEntity" class="modalDialog">
+  <div>
+    <a href="#close" onclick="stopVideo()" title="Close" class="close">X</a>
+    <div id="player"></div>
+  </div>
+</div>
+ <div style="height:300px;"><p></div>
+
+
+      <div class="featurette" style="background-color: ivory">
+      <ul style="background-color:ivory;">
+        <li style="background-color:ivory; border: 10px solid ivory;"><a><img  src="images/bug_report.png"></img></a></li>
+        <li style="background-color:ivory; border: 10px solid ivory;"><a><img  src="images/chart_spreadsheet.png"></img></a></li>
+        <li style="background-color:ivory; border: 10px solid ivory;"><a><img  src="images/preview.png"></img></a></li>
+        <li style="background-color:ivory; border: 10px solid ivory;"><a><img  src="images/proguard.gif"></img></a></li>
+      </ul>
+        <div class="row">
+          <div class="col-md-3">
+                        <h2 class="featurette-heading">Powerful Log!</h2>
+            <p class="lead">웹 서버에서 실시간으로 사용자가 보내온 로그 정보를 받아 볼 수 있습니다. 클라이언트 소스와 함께 제공되는 AppEngine을 이용 할수도 있고 사용자가 클라이언트에서 직접 구현하여 다른 서버에서도 로그 정보를 받아 올 수 있게 컨트롤 할 수 있습니다.
+            </a></button>
+          </div>
+          <div class="col-md-3">
+              <h2 class="featurette-heading">Google Docs 연동</h2>
+              <p class="lead">구글 Docs와 연동하여 자세한 정보를 찾아볼 수 있습니다.</p>
+          </div>
+          <div class="col-md-3">
+            <h2 class="featurette-heading">100+ Visualization through the Web!</h2>
+             <p class="lead">UrQA에서 제공하는 AppEngine을 이용하면 에러 리포트정보를 가시화 시켜서 한눈에 어떤 에러와 어떤 정보들이 많이 들어 왔는지 쉽게 알 수 있습니다. UrQA의 강력한 Visualization기능을 맛보세요</p>
+          </div>
+           <div class="col-md-3">
+              <h2 class="featurette-heading">ProGuard Android 지원</h2>
+              <p class="lead">더이상의 소스보안은 끝. UrQA는 ProGuard를 지원합니다.</p>
+          </div>
       </div>
      </div>
+
+
+        <div class="row">
+        
+          <div class="col-md-12">
+           <h2 class="featurette-heading">Who We Are!!</h2> 
+            <ul>
+              <li><a><img></img> src="http://res.cloudinary.com/dobny9ati/image/facebook/w_220,h_220,c_fill,g_face,r_max/1181257851.jpg"></img></a>
+                <center>
+                황학범<br>
+                Favorite Medium
+                 </center>
+                <ul>
+                  <li> <a href="#"><img src="images/social/facebook.png"></img></a></li>
+                  <li><a href="#"><img src="images/social/linkedin.png"></img></a></li>
+                  <li><a href="#"><img src="images/social/google_plus.png"></img></a></li>
+                </ul>
+              </li>
+              <li><a><img src="http://res.cloudinary.com/dobny9ati/image/facebook/w_220,h_220,c_fill,g_face,r_max/1680549739.jpg"></img></a>
+                <center>
+                김현종<br>
+                Gumi Korea
+                 </center>
+                <ul>
+                  <li> <a href="#"><img src="images/social/facebook.png"></img></a></li>
+                  <li><a href="#"><img src="images/social/linkedin.png"></img></a></li>
+                  <li><a href="#"><img src="images/social/google_plus.png"></img></a></li>
+                </ul>
+              </li>
+                </li>
+              <li><a><img src="http://res.cloudinary.com/dobny9ati/image/facebook/w_220,h_220,c_fill,g_face,r_max/1233102578.jpg"></img></a>
+                <center>
+                손영수<br>
+                NHN NEXT
+                 </center>
+                <ul>
+                  <li> <a href="#"><img src="images/social/facebook.png"></img></a></li>
+                  <li><a href="#"><img src="images/social/linkedin.png"></img></a></li>
+                  <li><a href="#"><img src="images/social/google_plus.png"></img></a></li>
+                </ul>
+              </li>
+                </li>
+              <li><a><img src="http://res.cloudinary.com/dobny9ati/image/facebook/w_220,h_220,c_fill,g_face,r_max/1184344295.jpg"></img></a>
+                <center>
+                백승용<br>
+                Coupang
+                 </center>
+                <ul>
+                  <li> <a href="#"><img src="images/social/facebook.png"></img></a></li>
+                  <li><a href="#"><img src="images/social/linkedin.png"></img></a></li>
+                  <li><a href="#"><img src="images/social/google_plus.png"></img></a></li>
+                </ul>
+              </li>
+                </li>
+              <li><a><img src="http://res.cloudinary.com/dobny9ati/image/facebook/w_220,h_220,c_fill,g_face,r_max/100001850477769.jpg"></img></a>
+                <center>
+                양현철<br>
+                KAIST
+                 </center>
+                <ul>
+                  <li> <a href="#"><img src="images/social/facebook.png"></img></a></li>
+                  <li><a href="#"><img src="images/social/linkedin.png"></img></a></li>
+                  <li><a href="#"><img src="images/social/google_plus.png"></img></a></li>
+                </ul>
+              </li>
+                </li>
+              <li><a><img src="http://res.cloudinary.com/dobny9ati/image/facebook/w_220,h_220,c_fill,g_face,r_max/519557264.jpg"></img></a>
+                <center>
+                유성우<br>
+                KTDS
+                 </center>
+                <ul>
+                  <li> <a href="#"><img src="images/social/facebook.png"></img></a></li>
+                  <li><a href="#"><img src="images/social/linkedin.png"></img></a></li>
+                  <li><a href="#"><img src="images/social/google_plus.png"></img></a></li>
+                </ul>
+              </li>
+                </li>
+            </ul>
+          </div>
+        </div>
+
+
+        <div class="row" style="background-color: ivory">
+          <div class="col-md-12">
+            <h2 class="featurette-heading">Contact Us</h2>
+            <p class="lead">항상 열려있습니다. 어디든 인터넷만 되는곳이면 여려분들의 의견을 기다립니다.</p>
+                      <a href="#"  style="text-decoration: none"><img src="images/social/facebook.png"></img>Facebook UserGroup</a><br>
+          <a href="#"  style="text-decoration: none"><img src="images/social/google_plus.png">Google User Gorup</img></a><br>
+          <a href="#"  style="text-decoration: none"><img src="images/social/github.png">URQA Github Page</img></a>
+          </div>
+          <div class="col-md-6">
+
+
+          </div>
+        </div>
 
 </div>
 </div>
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="bootstrap/js/jquery.js"></script>
-    <script src="bootstrap/js/bootstrap.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.js"></script>
     <script>
       !function ($) {
         $(function(){
@@ -279,4 +480,45 @@
         })
       }(window.jQuery)
     </script>
+<script>
+      // 2. This code loads the IFrame Player API code asynchronously.
+      var tag = document.createElement('script');
 
+      tag.src = "https://www.youtube.com/iframe_api";
+      var firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+      // 3. This function creates an <iframe> (and YouTube player)
+      //    after the API code downloads.
+      var player;
+      function onYouTubeIframeAPIReady() {
+        player = new YT.Player('player', {
+          height: '315',
+          width: '420',
+          videoId: 'TEwS0c1shdU',
+          events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
+          }
+        });
+      }
+
+      // 4. The API will call this function when the video player is ready.
+      function onPlayerReady(event) {
+        event.target.playVideo();
+      }
+
+      // 5. The API calls this function when the player's state changes.
+      //    The function indicates that when playing a video (state=1),
+      //    the player should play for six seconds and then stop.
+      var done = false;
+      function onPlayerStateChange(event) {
+        if (event.data == YT.PlayerState.PLAYING && !done) {
+          setTimeout(stopVideo, 1);
+          done = true;
+        }
+      }
+      function stopVideo() {
+        player.stopVideo();
+      }
+    </script>

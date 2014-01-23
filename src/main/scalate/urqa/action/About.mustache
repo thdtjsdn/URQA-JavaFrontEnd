@@ -205,6 +205,7 @@
   position: relative;
   margin: 10% auto;
   background: #fff;
+  border-radius: 10px;
   background: -moz-linear-gradient(#fff, #999);
   background: -webkit-linear-gradient(#fff, #999);
   background: -o-linear-gradient(#fff, #999);
@@ -318,7 +319,32 @@ li a img
   </div>
 </div>
 
+<div id="login" class="modalDialog" style="border-radius: 10px;">
+  <div>
 
+    <a href="#close" title="Close" class="close">X</a>
+        <div><p></div>
+    <center><h2>Login</h2></center>
+    <form name="login" action="beforeLogin" method="post">
+    <label>Name/Email</label><br>
+    <input name="id" value="" class="form-control"></input>
+    <label>Password</label><br>
+    <input type="password" name="pass" value="" class="form-control"></input>
+        <div class="row">
+          <div class="col-xs-4 col-sm-4 col-md-4">
+          <input type="submit" class="btn btn-lg btn-success btn-block" value="Sign In">
+          </div>
+          <div class="col-xs-4 col-sm-4 col-md-4">
+            <input type="submit" class="btn btn-lg btn-primary btn-block" value="Register">
+          </div>
+          <div class="col-xs-4 col-sm-4 col-md-4">
+              <input type="submit" class="btn btn-lg btn-primary btn-block" value="Login Google">
+          </div>
+            
+        </div>
+    </form>
+  </div>
+</div>
 
       <div class="featurette" style="background-color: ivory">
       <ul style="background-color:ivory;">

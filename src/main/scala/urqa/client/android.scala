@@ -53,6 +53,31 @@ class ClientNative extends Api {
   def execute() {
   	val map = requestContentJson[Map[String, String]]
 
+ 	var apikey = param("apikey")
+  	var datetime = param("datetime")
+  	var device = param("device")
+  	var country = param("country")
+  	var appversion = param("appversion")
+  	var osversion = param("osversion")
+  	var gpson = param("gpson")
+   	var wifion = param("wifion")
+  	var mobileon = param("mobileon")
+  	var scrwidth = param("scrwidth")
+  	var scrheight = param("scrheight")
+  	var batterylevel = param("batterylevel")
+  	var availsdcard = param("availsdcard")
+  	var rooted = param("rooted")
+  	var appmemtotal = param("appmemtotal")
+  	var appmemfree = param("appmemfree")
+   	var appmemmax = param("appmemmax")
+  	var kernelversion = param("kernelversion")
+  	var xdpi = param("xdpi")
+  	var ydpi = param("ydpi")
+   	var sysmemlow = param("sysmemlow")
+  	var scrorientation = param("scrorientation")
+  	var tag = param("tag")
+  	var rank = param("rank")
+
   	respondJson(Map("idinstance"->"12312"))
   }
 }
@@ -69,9 +94,10 @@ class ClientExceptionLog extends Api {
 @POST ("client/send/exception/dump/:idinstance")
 class ClientExceptionDump extends Api {
   def execute() {
+  	var idinstance = param("idinstance")
   	val map = requestContentJson[Map[String, String]]
 
-  	  	respondJson(map)
+  	respondJson(map)
   }
 }
 

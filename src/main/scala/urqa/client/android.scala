@@ -51,7 +51,6 @@ class ClientException extends Api {
 @POST ("client/send/native")
 class ClientNative extends Api {
   def execute() {
-  	val map = requestContentJson[Map[String, String]]
 
  	var apikey = param("apikey")
   	var datetime = param("datetime")

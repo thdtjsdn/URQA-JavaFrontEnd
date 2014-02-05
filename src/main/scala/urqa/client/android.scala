@@ -16,15 +16,6 @@ class ClientConnect extends Api {
 class ClientException extends Api {
   def execute() {
 
-
-eventpaths: [
-                 {datetime: yyyy­mm­dd hh:mm:ss,
-                 classname: string, 
-                 methodname: string, 
-                 linenum: 123, 
-                 label: string}
-               ]
-}
   	var apikey = param("apikey")
   	var datetime = param("datetime")
   	var device = param("device")
@@ -33,7 +24,6 @@ eventpaths: [
   	var errorclassname = param("errorclassname")
   	var linenum = param("linenum")
   	var callstack = param("callstack")
-   	var apikey = param("apikey")
   	var appversion = param("appversion")
   	var osversion = param("osversion")
   	var gpson = param("gpson")
